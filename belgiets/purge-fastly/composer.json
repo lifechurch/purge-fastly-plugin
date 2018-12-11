@@ -1,0 +1,40 @@
+{
+    "name": "belgiets/purge-fastly",
+    "description": "Purge fastly services",
+    "type": "craft-plugin",
+    "version": "0.0.1",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "purge fastly"
+    ],
+    "support": {
+        "docs": "???",
+        "issues": "???"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitriy Pashchenko",
+            "homepage": "https://github.com/Belgiets"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "belgiets\\purgefastly\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Purge fastly",
+        "handle": "purge-fastly",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "???",
+        "class": "belgiets\\purgefastly\\PurgeFastly"
+    }
+}

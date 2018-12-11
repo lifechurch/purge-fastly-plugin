@@ -1,0 +1,75 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Purge fastly plugin for Craft CMS 3.x
+ *
+ * Purge fastly Settings.twig
+ *
+ * @author    Dmitriy Pashchenko
+ * @copyright Copyright (c) 2018 Dmitriy Pashchenko
+ * @link      https://github.com/Belgiets
+ * @package   PurgeFastly
+ * @since     0.0.1
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("belgiets\\purgefastly\\assetbundles\\purgefastly\\PurgeFastlyAsset") %}
+
+{% set fieldRemove = '<div class="buttons"><div class="btngroup"><a class="error remove-settings" data-icon="remove" data-remove="-index-{{}}">Delete</a></div></div>' %}
+
+{% set fieldExample = '<div class="settings-field -index-{{}}">' ~ forms.textField({label: 'Fastly service id ={}=',
+    id: 'settings-serviceIDs-{{}}', name: 'settings[serviceIDs][{{}}]'}) ~ fieldRemove ~ '</div>' %}
+
+<div class="fields-wrapper">
+    <div class="fastly-token-wrapper">
+        <div class="settings-field">
+            {{ forms.textField({
+                label: 'Fastly token',
+                id: 'token',
+                name: 'token',
+                value: settings.token })
+            }}
+
+            {% if settings.errors is defined and settings.errors['token'] is defined %}
+                <ul class="errors">
+                    {% for error in settings.errors['token'] %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="fastly-sids-wrapper" data-field='{{ fieldExample }}'>
+        {% for serviceID in settings.serviceIDs %}
+            {% set idIndex = loop.index - 1 %}
+            <div class="settings-field -index-{{ idIndex }}">
+                {{ forms.textField({
+                    label: 'Fastly service id ' ~ loop.index,
+                    id: 'serviceIDs-' ~ idIndex,
+                    name: 'serviceIDs[' ~ idIndex ~ ']',
+                    value: serviceID})
+                }}
+
+                {% if settings.errors is defined and
+                    settings.errors['serviceIDs'] is defined and
+                    settings.errors['serviceIDs'][idIndex] is defined %}
+                    <ul class="errors">
+                        <li>{{ settings._errors['serviceIDs'][idIndex] }}</li>
+                    </ul>
+                {% endif %}
+
+                {% if idIndex > 0 %}
+                    {{ fieldRemove|replace('/{{}}/', idIndex)|raw }}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="buttons">
+        <div class="btngroup">
+            <div class="btn add icon" id="add-sid">Add service id</div>
+        </div>
+    </div>
+</div>
