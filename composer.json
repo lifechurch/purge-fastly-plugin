@@ -36,5 +36,14 @@
         "hasCpSection": false,
         "changelogUrl": "???",
         "class": "belgiets\\purgefastly\\PurgeFastly"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "apt-get install -y npm",
+            "npm install -g n",
+            "n 10",
+            "npm i --prefix ./vendor/belgiets/purge-fastly ./vendor/belgiets/purge-fastly",
+            "./vendor/belgiets/purge-fastly/node_modules/.bin/gulp --gulpfile ./vendor/belgiets/purge-fastly/gulpfile.js default"
+        ]
     }
 }
