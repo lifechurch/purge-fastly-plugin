@@ -8,7 +8,7 @@ use craft\models\FieldLayoutTab;
 use yii\base\Component;
 use Craft;
 
-class SurrKeysFields extends Component 
+class SurrKeysFields extends Component
 {
     const TAB_NAME = 'Purge Fastly';
     const FIELD_HANDLE = 'surrogateKeys';
@@ -33,8 +33,8 @@ class SurrKeysFields extends Component
             'groupId' => 1,
             'name' => 'Surrogate Keys',
             'handle' => self::FIELD_HANDLE,
-            'instructions' => '',
-            'translationMethod' => craft\base\Field::TRANSLATION_METHOD_NONE,
+            'instructions' => 'Please, add each key separated by space',
+            'translationMethod' => PlainText::TRANSLATION_METHOD_NONE,
             'translationKeyFormat' => null,
             'settings' => [
                 'placeholder' => '',
@@ -72,27 +72,28 @@ class SurrKeysFields extends Component
     public function addFields()
     {
         $sectionsService = Craft::$app->getSections();
-        $sections = $sectionsService->getAllSections();
         $newField = $this->createFieldLayoutField();
 
-        if (is_array($sections) && $newField) {
-            foreach ($sections as $section) {
-                if ($entryTypes = $section->getEntryTypes()) {
-                    foreach ($entryTypes as $entryType) {
-                        $fieldLayout = $entryType->getFieldLayout();
-                        $tabs = $fieldLayout->getTabs();
-                        $fields = $fieldLayout->getFields();
+        if ($sections = $sectionsService->getAllSections() && !empty($sections)) {
+            if (is_array($sections) && $newField) {
+                foreach ($sections as $section) {
+                    if ($entryTypes = $section->getEntryTypes()) {
+                        foreach ($entryTypes as $entryType) {
+                            $fieldLayout = $entryType->getFieldLayout();
+                            $tabs = $fieldLayout->getTabs();
+                            $fields = $fieldLayout->getFields();
 
-                        $tabs[] = $this->createFieldLayoutTabModel($fieldLayout->id);
-                        $fieldLayout->setTabs($tabs);
+                            $tabs[] = $this->createFieldLayoutTabModel($fieldLayout->id);
+                            $fieldLayout->setTabs($tabs);
 
-                        $fields[] = $newField;
-                        $fieldLayout->setFields($fields);
+                            $fields[] = $newField;
+                            $fieldLayout->setFields($fields);
 
-                        $this->fieldsService->saveLayout($fieldLayout);
+                            $this->fieldsService->saveLayout($fieldLayout);
+                        }
                     }
-                }
 
+                }
             }
         }
     }

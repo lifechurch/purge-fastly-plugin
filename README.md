@@ -5,17 +5,21 @@ Craft 3 cms plugin to work with [fastly service](https://www.fastly.com/)
 It adds Purge Fastly tab with Surrogate keys field to every entry type on plugin install
 
 ### Setup the plugin:    
-- connect to docker container:
+- connect to docker container(if needed):
 ```
-{% docker exec -it %container_name% /bin/bash %}
+docker exec -it %container_name% /bin/bash
 ```
 - add repository:
 ```
-{% composer config repositories.purge-fastly vcs https://in.thewardro.be/io/interactive/purge-fastly-plugin.git %}
+composer config repositories.purge-fastly vcs https://in.thewardro.be/io/interactive/purge-fastly-plugin.git
 ```
-- require package and put your gitlab creds:
+- add gitlab creds to composer:
 ```
-{% composer require -f belgiets/purge-fastly:dev-dev -vvv %}
+env COMPOSER_AUTH={"http-basic":{"in.thewardro.be":{"username":"%gitlab_username%","password":"%gitlab_password%"}}}
+```
+- require package:
+```
+composer require belgiets/purge-fastly:dev-dev
 ``` 
 
 ### Configure the plugin:

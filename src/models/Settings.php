@@ -54,7 +54,7 @@ class Settings extends Model
     public function rules()
     {
         return [
-            ['serviceIDs', 'each', 'rule' => ['string', 'min' => 22, 'max' => 22]],
+            ['serviceIDs', 'each', 'rule' => ['string', 'min' => 22]],
             ['token', 'string', 'min' => 32, 'max' => 32]
         ];
     }
