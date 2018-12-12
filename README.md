@@ -13,9 +13,9 @@ docker exec -it %container_name% /bin/bash
 ```
 composer config repositories.purge-fastly vcs https://in.thewardro.be/io/interactive/purge-fastly-plugin.git
 ```
-- add gitlab creds to composer:
+- add gitlab creds to composer(if composer auth.json is not exists, otherwise update auth.json if needed):
 ```
-env COMPOSER_AUTH={"http-basic":{"in.thewardro.be":{"username":"%gitlab_username%","password":"%gitlab_password%"}}}
+env COMPOSER_AUTH='{"http-basic":{"in.thewardro.be":{"username":"%gitlab_username%","password":"%gitlab_password%"}}}'
 ```
 - require package:
 ```
