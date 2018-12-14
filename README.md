@@ -7,6 +7,9 @@ Plugin adds specific field for setting fastly surrogate keys. If content has tha
 This plugin requires Craft CMS 3.0.0-beta.23 or later.
 
 ## Installation
+```
+composer require lifechurch/purge-fastly
+```
 
 ## Configuring Purge fastly
 
