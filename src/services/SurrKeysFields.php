@@ -1,13 +1,17 @@
 <?php
 
-namespace belgiets\purgefastly\services;
-
+namespace lifechurch\purgefastly\services;
 
 use craft\fields\PlainText;
 use craft\models\FieldLayoutTab;
 use yii\base\Component;
 use Craft;
 
+/**
+ * @author    Dmitriy Pashchenko
+ * @package   PurgeFastly
+ * @since     1.0.0
+ */
 class SurrKeysFields extends Component
 {
     const TAB_NAME = 'Purge Fastly';

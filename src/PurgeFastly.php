@@ -8,11 +8,11 @@
  * @copyright Copyright (c) 2018 Dmitriy Pashchenko
  */
 
-namespace belgiets\purgefastly;
+namespace lifechurch\purgefastly;
 
-use belgiets\purgefastly\models\Settings;
-use belgiets\purgefastly\services\FastlyService;
-use belgiets\purgefastly\services\SurrKeysFields;
+use lifechurch\purgefastly\models\Settings;
+use lifechurch\purgefastly\services\FastlyService;
+use lifechurch\purgefastly\services\SurrKeysFields;
 use Craft;
 use craft\events\ElementEvent;
 use craft\services\Elements;
@@ -22,20 +22,15 @@ use craft\services\Plugins;
 use craft\events\PluginEvent;
 
 /**
- * Craft plugins are very much like little applications in and of themselves. We’ve made
- * it as simple as we can, but the training wheels are off. A little prior knowledge is
- * going to be required to write a plugin.
- *
- * For the purposes of the plugin docs, we’re going to assume that you know PHP and SQL,
- * as well as some semi-advanced concepts like object-oriented programming and PHP namespaces.
- *
- * https://craftcms.com/docs/plugins/introduction
+ * Class PurgeFastly
  *
  * @author    Dmitriy Pashchenko
  * @package   PurgeFastly
- * @since     0.0.1
+ * @since     1.0.0
  *
  * @property  Settings $settings
+ * @property  SurrKeysFields surrKeysFields
+ * @property  FastlyService FastlyService
  * @method    Settings getSettings()
  */
 class PurgeFastly extends Plugin

@@ -1,34 +1,43 @@
-# Purge fastly
+# Purge fastly plugin for Craft CMS 3.x
 
-Craft 3 cms plugin to work with [fastly service](https://www.fastly.com/)
+Plugin adds specific field for setting fastly surrogate keys. If content has that keys it will be purged by every content save/edit action for every fastly service id(you can add ids on settings page).
 
-It adds Purge Fastly tab with Surrogate keys field to every entry type on plugin install
+![Screenshot](resources/img/plugin-logo.png)
 
-### Setup the plugin:    
-- connect to docker container(if needed):
-```
-docker exec -it %container_name% /bin/bash
-```
-- add repository:
-```
-composer config repositories.purge-fastly vcs https://in.thewardro.be/io/interactive/purge-fastly-plugin.git
-```
-- add gitlab creds to composer(if composer auth.json is not exists, otherwise update auth.json if needed):
-```
-env COMPOSER_AUTH='{"http-basic":{"in.thewardro.be":{"username":"%gitlab_username%","password":"%gitlab_password%"}}}'
-```
-- require package:
-```
-composer require belgiets/purge-fastly:dev-dev
-``` 
+## Requirements
 
-### Configure the plugin:
-Configure [API token](https://docs.fastly.com/api/auth#tokens) and Fastly services ids on plugin's settings page
+This plugin requires Craft CMS 3.0.0-beta.23 or later.
 
-You need to add that line to your entry template at the top to create relationships between keys and objects [API doc](https://docs.fastly.com/guides/purging/getting-started-with-surrogate-keys#creating-relationships-between-keys-and-objects)
+## Installation
 
-```
-{% header "Surrogate-Key: " ~ entry.surrogateKeys %}
-```
+To install the plugin, follow these instructions.
 
-After entry save/edit it'll send purge request to fastly service (if surrogate keys configured for that entry)
+1. Open your terminal and go to your Craft project:
+
+        cd /path/to/project
+
+2. Then tell Composer to load the plugin:
+
+        composer require Purge fastly/purge-fastly
+
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Purge fastly.
+
+## Purge fastly Overview
+
+-Insert text here-
+
+## Configuring Purge fastly
+
+-Insert text here-
+
+## Using Purge fastly
+
+-Insert text here-
+
+## Purge fastly Roadmap
+
+Some things to do, and ideas for potential features:
+
+* Release it
+
+Brought to you by [Dmitriy Pashchenko](https://github.com/Belgiets)

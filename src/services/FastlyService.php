@@ -1,13 +1,17 @@
 <?php
 
-
-namespace belgiets\purgefastly\services;
+namespace lifechurch\purgefastly\services;
 
 use GuzzleHttp\Exception\ClientException;
 use yii\base\Component;
 use GuzzleHttp\Client;
 use Craft;
 
+/**
+ * @author    Dmitriy Pashchenko
+ * @package   PurgeFastly
+ * @since     1.0.0
+ */
 class FastlyService extends Component
 {
     const FS_BASE_URI = 'https://api.fastly.com/';
