@@ -2,42 +2,20 @@
 
 Plugin adds specific field for setting fastly surrogate keys. If content has that keys it will be purged by every content save/edit action for every fastly service id(you can add ids on settings page).
 
-![Screenshot](resources/img/plugin-logo.png)
-
 ## Requirements
 
 This plugin requires Craft CMS 3.0.0-beta.23 or later.
 
 ## Installation
 
-To install the plugin, follow these instructions.
-
-1. Open your terminal and go to your Craft project:
-
-        cd /path/to/project
-
-2. Then tell Composer to load the plugin:
-
-        composer require Purge fastly/purge-fastly
-
-3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Purge fastly.
-
-## Purge fastly Overview
-
--Insert text here-
-
 ## Configuring Purge fastly
 
--Insert text here-
+Configure [API token](https://docs.fastly.com/api/auth#tokens) and Fastly services ids on plugin's settings page
 
-## Using Purge fastly
+You need to add that line to your entry template at the top to create relationships between keys and objects [API doc](https://docs.fastly.com/guides/purging/getting-started-with-surrogate-keys#creating-relationships-between-keys-and-objects)
 
--Insert text here-
+```
+{% header "Surrogate-Key: " ~ entry.surrogateKeys %}
+```
 
-## Purge fastly Roadmap
-
-Some things to do, and ideas for potential features:
-
-* Release it
-
-Brought to you by [Dmitriy Pashchenko](https://github.com/Belgiets)
+After entry save/edit it'll send purge request to fastly service (if surrogate keys configured for that entry)

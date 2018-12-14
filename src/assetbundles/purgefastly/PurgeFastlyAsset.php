@@ -26,7 +26,7 @@ class PurgeFastlyAsset extends AssetBundle
      */
     public function init()
     {
-        $this->sourcePath = "@belgiets/purgefastly/assetbundles/purgefastly/dist";
+        $this->sourcePath = "@lifechurch/purgefastly/assetbundles/purgefastly/dist";
 
         $this->depends = [
             CpAsset::class,
