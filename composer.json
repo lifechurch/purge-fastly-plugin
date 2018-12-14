@@ -1,6 +1,6 @@
 {
-    "name": "belgiets/purge-fastly",
-    "description": "Purge fastly services",
+    "name": "lifechurch/purge-fastly",
+    "description": "Plugin adds specific field for setting fastly surrogate keys. If content has that keys it will be purged by every content save/edit action for every fastly service id(you can add ids on settings page).",
     "type": "craft-plugin",
     "version": "1.0.0",
     "keywords": [
@@ -10,6 +10,10 @@
         "craft-plugin",
         "purge fastly"
     ],
+    "support": {
+        "docs": "https://github.com/lifechurch/purge-fastly-plugin/blob/master/README.md",
+        "issues": "https://github.com/lifechurch/purge-fastly-plugin/issues"
+    },
     "license": "MIT",
     "authors": [
         {
@@ -22,7 +26,7 @@
     },
     "autoload": {
         "psr-4": {
-          "belgiets\\purgefastly\\": "src/"
+          "lifechurch\\purgefastly\\": "src/"
         }
     },
     "extra": {
@@ -30,7 +34,10 @@
         "handle": "purge-fastly",
         "hasCpSettings": true,
         "hasCpSection": false,
-        "changelogUrl": "???",
-        "class": "belgiets\\purgefastly\\PurgeFastly"
+        "components": {
+            "surrKeysFields": "lifechurch\\purgefastly\\services\\SurrKeysFields",
+            "fastly": "lifechurch\\purgefastly\\services\\FastlyService"
+        },
+        "class": "lifechurch\\purgefastly\\PurgeFastly"
     }
 }
