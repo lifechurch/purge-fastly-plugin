@@ -88,17 +88,17 @@ class PurgeFastly extends Plugin
                 $settings = $this->getSettings();
                 $this->fastly->setToken($settings->token);
 
+                //every tab
                 foreach ($event->element->getFieldLayout()->getTabs() as $tab) {
-                    if ($tab->name === SurrKeysFields::TAB_NAME) {
-                        foreach ($tab->getFields() as $field) {
-                            if ($field->handle === SurrKeysFields::FIELD_HANDLE) {
-                                foreach ($settings->serviceIDs as $id) {
-                                    if (!empty($id)) {
-                                        $keys = $event->element->getFieldValue(SurrKeysFields::FIELD_HANDLE);
+                    //every field
+                    foreach ($tab->getFields() as $field) {
+                        if ($field->handle === SurrKeysFields::FIELD_HANDLE) {
+                            foreach ($settings->serviceIDs as $id) {
+                                if (!empty($id)) {
+                                    $keys = $event->element->getFieldValue(SurrKeysFields::FIELD_HANDLE);
 
-                                        if ($keys) {
-                                            $this->fastly->purgeByKey($id, $keys);
-                                        }
+                                    if ($keys) {
+                                        $this->fastly->purgeByKey($id, $keys);
                                     }
                                 }
                             }
